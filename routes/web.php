@@ -1,5 +1,8 @@
 <?php
 
+// use Illuminate\Routing\Route;
+// use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix'=>'admin'],function()
+{
+    Route::get('public/login','Admin\PublicController@login');
+    Route::post('public/check','Admin\PublicController@check');
 });
