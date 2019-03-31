@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Queue\Capsule\Manager;
+
 return [
 
     /*
@@ -46,6 +48,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        //自定义
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
     ],
 
     /*
@@ -70,11 +77,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        //admin provider
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin\Manager::class,
+        ],
     ],
 
     /*

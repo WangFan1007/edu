@@ -16,6 +16,13 @@
 
 Route::group(['prefix'=>'admin'],function()
 {
-    Route::get('public/login','Admin\PublicController@login');
+    Route::get('public/login','Admin\PublicController@login')->name('login');
+    Route::get('public/logout','Admin\PublicController@logout')->name('logout');
     Route::post('public/check','Admin\PublicController@check');
+});
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
+{
+    Route::get('admin/index','Admin\IndexController@index')->name('adminIndex');
+    Route::get('admin/welcome','Admin\IndexController@welcome');
 });
