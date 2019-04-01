@@ -25,4 +25,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
 {
     Route::get('admin/index','Admin\IndexController@index')->name('adminIndex');
     Route::get('admin/welcome','Admin\IndexController@welcome');
+
+    Route::get('manager/index','Admin\ManagerController@index')->name('managerIndex');
 });
